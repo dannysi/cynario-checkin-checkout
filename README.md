@@ -14,3 +14,7 @@ After starting the server, you can access the application in your web browser at
 * http://localhost:8000/checkout?user=danny - will finish the task "danny" is working on
 * http://localhost:8000/report - will report all finished tasks
 
+### Running the frontend
+* Enter the frontend directory
+* `npm install`
+* `npm start`
