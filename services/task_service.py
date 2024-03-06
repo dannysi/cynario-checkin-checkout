@@ -11,6 +11,8 @@ class TaskService(object):
 
     @staticmethod
     def create_task(owner, name):
+        if task_db.has_ongoing_task(owner):
+            raise HTTPException(status_code=404, detail="User already has an open task.")
         return task_db.add_ongoing_task(owner, OngoingTask(name))
 
     @staticmethod

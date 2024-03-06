@@ -8,16 +8,16 @@ router = APIRouter()
 task_service = TaskService()
 
 
-@router.get("/checkin")
-def checkin(user: Optional[str] = None, task: Optional[str] = None):
+@router.get("/{user}/checkin/{task}")
+def checkin(user: str, task: str):
     return "Success" if task_service.create_task(user, task) else "Failed"
 
 
 
-@router.get("/checkout")
-def checkout(user: Optional[str] = None):
+@router.get("/{checkout_user}/checkout")
+def checkout(checkout_user: str):
     try:
-        success = task_service.finish_task(user)
+        success = task_service.finish_task(checkout_user)
     except HTTPException as e:
         raise e
     return "Success" if success else "Failed"
